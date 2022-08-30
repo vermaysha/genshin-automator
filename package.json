@@ -1,0 +1,24 @@
+{
+  "name": "genshin-impact-automatic-web-helper",
+  "version": "1.0.0",
+  "description": "Used for Genshin Impact automatic check-in to hoyolab web login event and auto claim reward codes.",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper.git"
+  },
+  "keywords": [
+    "genshin",
+    "genshin-impact",
+    "genshin-impact-helper"
+  ],
+  "author": "Ashary Vermaysha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper/issues"
+  },
+  "homepage": "https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper#readme"
+}
