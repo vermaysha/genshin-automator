@@ -1,0 +1,27 @@
+compile = "./bin/build.sh"
+run = "node --enable-source-maps dist/server.js"
+entrypoint = "server.ts"
+
+[languages.typescript]
+pattern = "**/{*.ts,*.js,*.tsx,*.jsx}"
+syntax = "typescript"
+
+[languages.typescript.languageServer]
+start = [ "typescript-language-server", "--stdio" ]
+
+[packager]
+language = "nodejs"
+
+[packager.features]
+enabledForHosting = false
+packageSearch = true
+guessImports = true
+
+[env]
+XDG_CONFIG_HOME = "/home/runner/.config"
+
+[nix]
+channel = "stable-21_11"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", "bin"]
