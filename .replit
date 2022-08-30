@@ -1,5 +1,5 @@
-compile = "./bin/build.sh"
-run = "node --enable-source-maps dist/server.js"
+compile = "npm run build"
+run = "npm run start"
 entrypoint = "server.ts"
 
 [languages.typescript]
