@@ -1,4 +1,4 @@
 node_modules
 .history
-dist
+.build
 database.db
