@@ -45,18 +45,18 @@ const redeem = async (cookies, i) => {
 }
 
 export default () => {
-    // Run every 10 minutes UTC+08:00 time
-    console.log('Redeem scheduled for every 10th minutes UTC+08:00 timezone')
-    const task = cron.schedule('*/10 * * * *', async () => {
-      const cookies = split(OS_COOKIES, '#');
+  // Run every 10 minutes UTC+08:00 time
+  console.log('Redeem scheduled for every 10th minutes UTC+08:00 timezone')
+  const task = cron.schedule('*/10 * * * *', async () => {
+    const cookies = split(OS_COOKIES, '#');
 
-      for (let i = 0; i < cookies.length; i++) {
-        console.log(`Redeem running for accounts no ${i + 1}`)
-        redeem(cookies, i)
-      }
-    }, {
-        timezone: 'Asia/Singapore',
-    })
+    for (let i = 0; i < cookies.length; i++) {
+      console.log(`Redeem running for accounts no ${i + 1}`)
+      redeem(cookies, i)
+    }
+  }, {
+    timezone: 'Asia/Singapore',
+  })
 
-    task.start()
+  task.start()
 }
