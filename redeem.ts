@@ -22,6 +22,9 @@ const redeem = async (cookies, i) => {
       return redeemedCodes.includes(row.code) == false
     })
 
+    if (codes.length < 1)
+      console.log(`No new redeem found for account no ${i + 1}`)
+
     for (let j = 0; j < codes.length; j++) {
       if (j > 0) {
         await sleep(6000)
