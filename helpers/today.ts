@@ -1,4 +1,5 @@
 export default () => {
+  process.env.TZ = 'Asia/Singapore'
   const date_ob = new Date()
 
   // current date
