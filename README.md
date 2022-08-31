@@ -75,7 +75,7 @@ npm run start
 
 Untuk mendapatkan cookies dapat mengikuti langkah-langkah berikut secara urut, yaitu:
 
-- Mengakses halaman [hoyolab](https://hoyolab.com)
+- Mengakses halaman [Hoyolab](https://hoyolab.com)
 - Kemudian buka menu **Developer tools**, umumnya menggunakan kombinasi shortcut `Ctrl+Shift+I` atau `F12`, apabila tidak tampil juga silahkan ikuti intruksi gambar dibawah <br>
   ![How to open Developer tools instruction](https://i.imgur.com/TTsl6aA.png)
 - Setelah menu **Developer tools** terbuka, pilih tab **Console** kemudian ketik perintah `document.cookie` seperti gambar dibawah <br>
