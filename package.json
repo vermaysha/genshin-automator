@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn server.ts",
     "start": "npm run prod",
-    "prod": "node --enable-source-maps dist/server.js",
+    "prod": "node --enable-source-maps .build/server.js",
     "build": "sh ./.config/build.sh"
   },
   "repository": {
@@ -24,7 +24,7 @@
     "email": "vermaysha@gmail.com",
     "url": "https://vermaysha.com"
   },
-  "license": "MIT",
+  "license": "GPL 3.0",
   "bugs": {
     "url": "https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper/issues",
     "email": "vermaysha@gmail.com"

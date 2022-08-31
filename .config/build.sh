@@ -2,14 +2,14 @@
 
 set -e
 
-rm -rf dist
-mkdir -p ./dist
+rm -rf .build
+mkdir -p ./.build
 
 ENTRYPOINTS=$(find -type f -name '*.[tj]s' -not -path './node_modules/*' -not -path './.history/*')
 
 esbuild $ENTRYPOINTS \
 	--log-level=warning \
-	--outdir='./dist' \
+	--outdir='./.build' \
 	--outbase=. \
 	--sourcemap \
 	--target='node16' \
