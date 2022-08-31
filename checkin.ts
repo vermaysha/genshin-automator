@@ -34,15 +34,17 @@ const checkin = async (cookies, i) => {
   stmt.run(mainAccount.game_uid, today(), `${reward.name} x ${reward.cnt}`, status)
 
   sendHookSignIn(status, reward, mainAccount, totalLoginDay, i, cookies)
+  console.log(`Check-in status for accounts no ${i + 1}: ${status}`)
 }
 
 export default async () => {
   // Run every 00.00PM UTC+08:00 time
+  console.log('Check-in scheduled for 00.00 UTC+08:00 timezone')
   const task = cron.schedule('0 0 * * *', async () => {
-    const cookies = split(OS_COOKIES, '#');
-
+    const cookies = split(OS_COOKIES, '#')
     for (let i = 0; i < cookies.length; i++) {
-        checkin(cookies, i)
+      console.log(`Check-in running for accounts no ${i + 1}`)
+      checkin(cookies, i)
     }
   }, {
     timezone: 'Asia/Singapore',
