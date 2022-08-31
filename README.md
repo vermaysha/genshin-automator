@@ -13,6 +13,7 @@
   - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
   - [Compiles for production](#compiles-for-production)
   - [How to get cookies](#how-to-get-cookies)
+  - [How to setup multiple accounts](#how-to-setup-multiple-accounts)
 - [Credits](#credits)
 - [Terms and License](#terms-and-license)
 - [About Us](#about-us)
