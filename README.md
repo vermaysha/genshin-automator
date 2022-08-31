@@ -15,6 +15,7 @@ Semenjak Heroku sudah tidak menyediakan free tier dan saya dapat informasi kalau
   - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
   - [Compiles for production](#compiles-for-production)
 - [Setup Replit Project](#setup-replit-project)
+- [How to get code updates in Replit ?](#how-to-get-code-updates-in-replit)
 - [How to get cookies](#how-to-get-cookies)
 - [How to setup multiple accounts](#how-to-setup-multiple-accounts)
 - [How to get User Agent ?](#how-to-get-user-agent)
@@ -88,6 +89,15 @@ Sebelum menggunakan layanan dari Replit silahkan pastikan dulu sudah memiliki ak
 6. Tunggu beberapa saat sebelum dijalankan dan pastikan sudah mengatur [Environment Settings](#environment-settings) <br> ![Importing](https://i.imgur.com/whq9qu5.png)
 7. Untuk mengatur Environment Variable bisa pada sidebar bagian kiri dengan icon gembok seperti gambar dibawah <br> ![ENV SETTING](https://i.imgur.com/jVxVYgN.png)
 8. Setelah project siap, bisa langsung dijalankan dengan mengeklik button `Run`
+9. Disarankan untuk menggunakan layanan dari [Freshping](https://www.freshworks.com/website-monitoring/) untuk mencegah layanan Replit mati.
+
+## How to get code updates in Replit ?
+
+Untuk mendapatkan code updates pada layanan Replit silahkan mengikuti cara ini:
+
+1. Pada repository hasil fork, apabila ada pesan `This branch is 1 commit behind vermaysha:master` maka ada update codes dan silahkan klik `Fetch upstream` -> `Update Branch` <br> ![Branch Updated](https://i.imgur.com/LEUCohR.png)
+2. Pada project Replitmu silahkan pilih menu seperti digambar dan klik button `Pull` <br> ![Pull](https://i.imgur.com/ZpeLPhn.png)
+3. Kode telah diupdate.
 
 ## How to get cookies
 
