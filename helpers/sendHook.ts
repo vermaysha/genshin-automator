@@ -20,7 +20,7 @@ export const sendHookSignIn = (status, reward, mainAccount, totalLoginDay, i, co
     .addField('Level', mainAccount.level)
     .addField('Server', mainAccount.region_name)
     .addField('Today\'s rewards', `${reward.name} x ${reward.cnt}`)
-    .addField('Total Daily Check-In', totalLoginDay)
+    .addField('Total Daily Check-In', (totalLoginDay + 1))
     .addField('Check-in result:', status, false)
 
   hook.send(embed)
