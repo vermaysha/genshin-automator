@@ -8,7 +8,7 @@
     "dev": "ts-node-dev --respawn server.ts",
     "start": "npm run prod",
     "prod": "node --enable-source-maps dist/server.js",
-    "build": "sh ./bin/build.sh"
+    "build": "sh ./.config/build.sh"
   },
   "repository": {
     "type": "git",

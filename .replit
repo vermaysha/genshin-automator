@@ -24,4 +24,4 @@ XDG_CONFIG_HOME = "/home/runner/.config"
 channel = "stable-21_11"
 
 [gitHubImport]
-requiredFiles = [".replit", "replit.nix", "bin"]
+requiredFiles = [".replit", "replit.nix", ".config"]
