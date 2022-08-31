@@ -6,6 +6,7 @@ import request from './helpers/request';
 import highest from './helpers/highest';
 import { sendHookRedeem } from './helpers/sendHook';
 import sleep from './helpers/sleep';
+import today from './helpers/today';
 
 const redeem = async (cookies, i) => {
   const allCodes = remove((await request('get', API_REDEEM_LIST, cookies[i])).CODES, (n: Record<any, any>) => {
@@ -35,8 +36,8 @@ const redeem = async (cookies, i) => {
       const resp = (await (request('get', host, cookies[i])))
       const status = resp.message ?? 'Sucessfully claim redeem code rewards'
 
-      const stmt = db.prepare(`INSERT INTO redeemed (uid, codes, reward, message) VALUES (?, ?, ?, ?)`)
-      stmt.run(mainAccount.game_uid, code.code,code.reward, status)
+      const stmt = db.prepare(`INSERT INTO redeemed (uid, codes, reward, message, date) VALUES (?, ?, ?, ?, ?)`)
+      stmt.run(mainAccount.game_uid, code.code,code.reward, status, today())
 
       sendHookRedeem(status, mainAccount, code.code, code.reward, i, cookies)
       console.log(`Redeem status for accounts no ${i + 1} with codes ${code.code}: ${status}`)

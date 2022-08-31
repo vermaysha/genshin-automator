@@ -19,6 +19,7 @@ db.run(`CREATE TABLE IF NOT EXISTS redeemed (
   codes varchar(20) NOT NULL,
   reward VARCHAR(50) NULL,
   message VARCHAR(50) NULL,
+  date DATE NOT NULL,
   UNIQUE(uid, codes)
 )`)
 
