@@ -23,8 +23,10 @@ const redeem = async (cookies, i) => {
       return redeemedCodes.includes(row.code) == false
     })
 
-    if (codes.length < 1)
+    if (codes.length < 1) {
       console.log(`No new redeem found for account no ${i + 1}`)
+      return
+    }
 
     for (let j = 0; j < codes.length; j++) {
       if (j > 0) {
@@ -36,8 +38,10 @@ const redeem = async (cookies, i) => {
       const resp = (await (request('get', host, cookies[i])))
       const status = resp.message ?? 'Sucessfully claim redeem code rewards'
 
-      const stmt = db.prepare(`INSERT INTO redeemed (uid, codes, reward, message, date) VALUES (?, ?, ?, ?, ?)`)
-      stmt.run(mainAccount.game_uid, code.code,code.reward, status, today())
+      if (resp.retcode == 0) {
+        const stmt = db.prepare(`INSERT INTO redeemed (uid, codes, reward, message, date) VALUES (?, ?, ?, ?, ?)`)
+        stmt.run(mainAccount.game_uid, code.code,code.reward, status, today())
+      }
 
       sendHookRedeem(status, mainAccount, code.code, code.reward, i, cookies)
       console.log(`Redeem status for accounts no ${i + 1} with codes ${code.code}: ${status}`)
@@ -47,8 +51,8 @@ const redeem = async (cookies, i) => {
 
 export default () => {
   // Run every 10 minutes UTC+08:00 time
-  console.log('Redeem scheduled for every 10th minutes UTC+08:00 timezone')
-  const task = cron.schedule('*/10 * * * *', async () => {
+  console.log('Redeem scheduled for every 15th minutes UTC+08:00 timezone')
+  const task = cron.schedule('*/15 * * * *', async () => {
     const cookies = split(OS_COOKIES, '#');
 
     for (let i = 0; i < cookies.length; i++) {

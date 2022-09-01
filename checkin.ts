@@ -24,23 +24,33 @@ const checkin = async (cookies, i) => {
   const accounts = (await request('get', API_GAME_LIST, cookies[i])).data.list
   const mainAccount = highest(accounts)
 
-  const signIn = (await request('post', API_SIGN_IN, cookies[i]))
+  db.all(`SELECT id FROM redeemed WHERE uid = '${mainAccount.game_uid}', date = '${today()}'`, async (err, rows) => {
+    if (rows.length < 1) {
+      return false
+    }
 
-  const signReward = (await request('get', API_SIGN_REWARD, cookies[i])).data.awards
-  const reward = signReward[totalLoginDay]
-  const status = signIn.message ?? null
+    const signIn = (await request('post', API_SIGN_IN, cookies[i]))
 
-  const stmt = db.prepare(`INSERT INTO daily_login (uid, date, reward, message) VALUES (?, ?, ?, ?)`)
-  stmt.run(mainAccount.game_uid, today(), `${reward.name} x ${reward.cnt}`, status)
+    const signReward = (await request('get', API_SIGN_REWARD, cookies[i])).data.awards
+    const reward = signReward[totalLoginDay]
+    const status = signIn.message ?? null
 
-  sendHookSignIn(status, reward, mainAccount, totalLoginDay, i, cookies)
-  console.log(`Check-in status for accounts no ${i + 1}: ${status}`)
+    if (signIn.retcode == 0) {
+      const stmt = db.prepare(`INSERT INTO daily_login (uid, date, reward, message) VALUES (?, ?, ?, ?)`)
+      stmt.run(mainAccount.game_uid, today(), `${reward.name} x ${reward.cnt}`, status)
+    }
+
+
+    sendHookSignIn(status, reward, mainAccount, totalLoginDay, i, cookies)
+    console.log(`Check-in status for accounts no ${i + 1}: ${status}`)
+    })
+
 }
 
 export default async () => {
   // Run every 00.00PM UTC+08:00 time
-  console.log('Check-in scheduled for 00.00 UTC+08:00 timezone')
-  const task = cron.schedule('0 0 * * *', async () => {
+  console.log('Redeem scheduled for every 1 hour UTC+08:00 timezone')
+  const task = cron.schedule('* */1 * * *', async () => {
     const cookies = split(OS_COOKIES, '#')
     for (let i = 0; i < cookies.length; i++) {
       console.log(`Check-in running for accounts no ${i + 1}`)
