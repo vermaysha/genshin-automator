@@ -50,7 +50,7 @@ const checkin = async (cookies, i) => {
 export default async () => {
   // Run every 00.00PM UTC+08:00 time
   console.log('Redeem scheduled for every 1 hour UTC+08:00 timezone')
-  const task = cron.schedule('* */1 * * *', async () => {
+  const task = cron.schedule('0 * * * *', async () => {
     const cookies = split(OS_COOKIES, '#')
     for (let i = 0; i < cookies.length; i++) {
       console.log(`Check-in running for accounts no ${i + 1}`)
