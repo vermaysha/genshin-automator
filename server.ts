@@ -13,14 +13,13 @@ if (OS_COOKIES == null) {
 }
 
 app.get('/', (req, res) => {
+  checkin()
+  redeem()
   res.json({
     status: true,
     message: 'App is alive'
   })
 })
-
-checkin()
-redeem()
 
 app.listen(port, () => {
   console.log("App server listening on port " + port)
