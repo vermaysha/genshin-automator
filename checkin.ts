@@ -25,8 +25,8 @@ const checkin = async (cookies, i) => {
   const mainAccount = highest(accounts)
 
   db.all(`SELECT id FROM redeemed WHERE uid = '${mainAccount.game_uid}', date = '${today()}'`, async (err, rows) => {
-    console.log('Traveller, you\'ve already checked in today')
     if (rows?.length < 1) {
+      console.log('Traveller, you\'ve already checked in today')
       return false
     }
 
