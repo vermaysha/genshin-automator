@@ -54,7 +54,7 @@ export default async () => {
     const cookies = split(OS_COOKIES, '#')
     for (let i = 0; i < cookies.length; i++) {
       console.log(`Check-in running for accounts no ${i + 1}`)
-      checkin(cookies, i)
+      await checkin(cookies, i)
     }
   }, {
     timezone: 'Asia/Singapore',

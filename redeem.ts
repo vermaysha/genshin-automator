@@ -57,7 +57,7 @@ export default () => {
 
     for (let i = 0; i < cookies.length; i++) {
       console.log(`Redeem running for accounts no ${i + 1}`)
-      redeem(cookies, i)
+      await redeem(cookies, i)
     }
   }, {
     timezone: 'Asia/Singapore',
