@@ -24,8 +24,8 @@ const checkin = async (cookies, i) => {
   const accounts = (await request('get', API_GAME_LIST, cookies[i])).data.list
   const mainAccount = highest(accounts)
 
-  db.all(`SELECT id FROM redeemed WHERE uid = '${mainAccount.game_uid}', date = '${today()}'`, async (err, rows) => {
-    if (rows?.length < 1) {
+  db.all(`SELECT id FROM daily_login WHERE uid = '${mainAccount.game_uid}' AND date = '${today()}'`, async (err, rows) => {
+    if (rows?.length > 0) {
       console.log('Traveller, you\'ve already checked in today')
       return false
     }
@@ -49,8 +49,7 @@ const checkin = async (cookies, i) => {
 }
 
 export default async () => {
-  // Run every 00.00PM UTC+08:00 time
-  console.log('Redeem scheduled for every 1 hour UTC+08:00 timezone')
+  console.log('Checkin scheduled for every 1 hour UTC+08:00 timezone')
   const task = cron.schedule('0 * * * *', async () => {
     const cookies = split(OS_COOKIES, '#')
     for (let i = 0; i < cookies.length; i++) {
