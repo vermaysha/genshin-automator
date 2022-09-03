@@ -1,27 +1,35 @@
-import sqlite3 from "sqlite3"
+import Database from "better-sqlite3"
 
-const DBSOURCE = process.cwd() + "/database.db"
+const db = new Database(process.cwd() + "/database.db")
 
-const db = new sqlite3.Database(DBSOURCE)
+let stmt
 
-db.run(`CREATE TABLE IF NOT EXISTS daily_login (
+stmt = db.prepare(`CREATE TABLE IF NOT EXISTS daily_login (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  uid varchar(60) NOT NULL,
-  date DATE NOT NULL,
-  reward VARCHAR(20) NULL,
+  uid VARCHAR(30) NOT NULL,
+  nickname VARCHAR(60) NULL,
+  reward_icon VARCHAR(200) NULL,
+  reward_name VARCHAR(20) NULL,
+  reward_count INTEGER NULL,
   message VARCHAR(50) NULL,
-  UNIQUE(uid, date)
+  retcode INTEGER NULL,
+  created_at TEXT NOT NULL
 )`)
 
-db.run(`CREATE TABLE IF NOT EXISTS redeemed (
+stmt.run()
+
+stmt = db.prepare(`CREATE TABLE IF NOT EXISTS redeemed (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  uid varchar(60) NOT NULL,
-  codes varchar(20) NOT NULL,
-  reward VARCHAR(50) NULL,
+  uid VARCHAR(30) NOT NULL,
+  codes VARCHAR(10) NOT NULL,
+  nickname VARCHAR(60) NULL,
+  rewards TEXT NULL,
   message VARCHAR(50) NULL,
-  date DATE NOT NULL,
-  UNIQUE(uid, codes)
+  retcode INTEGER NULL,
+  created_at TEXT NOT NULL
 )`)
+
+stmt.run()
 
 // db.run(`CREATE TABLE IF NOT EXISTS last_checked (
 //   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
