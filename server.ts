@@ -7,6 +7,8 @@ import redeem from './redeem'
 const app = express()
 const port = process.env.PORT || 3000
 
+process.env.TZ = 'Asia/Singapore'
+
 if (OS_COOKIES == null) {
   console.error('Please set $OS_COOKIES in env')
   exit(0)
@@ -19,8 +21,8 @@ app.get('/', (req, res) => {
   })
 })
 
-checkin()
-redeem()
+// checkin()
+// redeem()
 
 app.listen(port, () => {
   console.log("App server listening on port " + port)
