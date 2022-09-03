@@ -19,10 +19,12 @@ app.get('/', (req, res) => {
     status: true,
     message: 'App is alive'
   })
-})
+});
 
-// checkin()
-// redeem()
+(async () => {
+  await checkin()
+  await redeem()
+})()
 
 app.listen(port, () => {
   console.log("App server listening on port " + port)
