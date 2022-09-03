@@ -1,11 +1,12 @@
 import { split } from 'lodash'
 import cron from 'node-cron'
 import { API_GAME_LIST, API_SIGN_IN, API_SIGN_INFO, API_SIGN_REWARD, OS_COOKIES } from './helpers/config'
+import { iso_date_string, month } from './helpers/date'
 import db from './helpers/db'
 import highest from './helpers/highest'
 import request from './helpers/request'
 import { sendHookSignIn } from './helpers/sendHook'
-import today from './helpers/today'
+
 
 const checkin = async (cookies, i) => {
   const signInfo = (await request('get', API_SIGN_INFO, cookies[i])).data
@@ -23,29 +24,30 @@ const checkin = async (cookies, i) => {
 
   const accounts = (await request('get', API_GAME_LIST, cookies[i])).data.list
   const mainAccount = highest(accounts)
+  let stmt
 
-  db.all(`SELECT id FROM daily_login WHERE uid = '${mainAccount.game_uid}' AND date = '${today()}'`, async (err, rows) => {
-    if (rows?.length > 0) {
-      console.log('Traveller, you\'ve already checked in today')
-      return false
-    }
+  stmt = db.prepare("SELECT *, strftime('%m') as month FROM daily_login WHERE uid = ? AND month = ?")
+  const rows = stmt.all(mainAccount.game_uid, month)
 
-    const signIn = (await request('post', API_SIGN_IN, cookies[i]))
+  if (rows.length > 0) {
+    console.log('Traveller, you\'ve already checked in today')
+    return false
+  }
 
-    const signReward = (await request('get', API_SIGN_REWARD, cookies[i])).data.awards
-    const reward = signReward[totalLoginDay]
-    const status = signIn.message ?? null
+  const signIn = (await request('post', API_SIGN_IN, cookies[i]))
 
-    if (signIn.retcode == 0) {
-      const stmt = db.prepare(`INSERT INTO daily_login (uid, date, reward, message) VALUES (?, ?, ?, ?)`)
-      stmt.run(mainAccount.game_uid, today(), `${reward.name} x ${reward.cnt}`, status)
-    }
+  const signReward = (await request('get', API_SIGN_REWARD, cookies[i])).data.awards
+  const reward = signReward[totalLoginDay]
+  const status = signIn.message ?? null
 
+  stmt = db.prepare(`INSERT INTO daily_login
+    (uid, nickname, reward_icon, reward_name, reward_count, message, retcode, created_at)
+    VALUES
+    (?, ?, ?, ?, ?, ?, ?, ?)`)
+  stmt.run(mainAccount.game_uid, mainAccount.nickname, reward.icon, reward.name, reward.cnt, status, signIn.retcode, iso_date_string)
 
-    sendHookSignIn(status, reward, mainAccount, totalLoginDay, i, cookies)
-    console.log(`Check-in status for accounts no ${i + 1}: ${status}`)
-    })
-
+  sendHookSignIn(status, reward, mainAccount, totalLoginDay, i, cookies)
+  console.log(`Check-in status for accounts no ${i + 1}: ${status}`)
 }
 
 export default async () => {
