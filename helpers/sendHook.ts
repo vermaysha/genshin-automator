@@ -1,8 +1,6 @@
 import { MessageBuilder, Webhook } from 'discord-ts-webhook'
 import { DISCORD_CALLBACK } from './config'
 
-process.env.TZ = 'Asia/Singapore'
-
 export const sendHookSignIn = (status, reward, mainAccount, totalLoginDay, i, cookies) => {
   if (DISCORD_CALLBACK == null) {
     return
