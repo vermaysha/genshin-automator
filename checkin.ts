@@ -1,7 +1,7 @@
 import { split } from 'lodash'
 import cron from 'node-cron'
 import { API_GAME_LIST, API_SIGN_IN, API_SIGN_INFO, API_SIGN_REWARD, OS_COOKIES } from './helpers/config'
-import { iso_date_string, month } from './helpers/date'
+import { iso_date_string, date } from './helpers/date'
 import db from './helpers/db'
 import highest from './helpers/highest'
 import request from './helpers/request'
@@ -26,8 +26,8 @@ const checkin = async (cookies, i) => {
   const mainAccount = highest(accounts)
   let stmt
 
-  stmt = db.prepare("SELECT *, strftime('%m') as month FROM daily_login WHERE uid = ? AND month = ?")
-  const rows = stmt.all(mainAccount.game_uid, month)
+  stmt = db.prepare("SELECT *, strftime('%d') as date FROM daily_login WHERE uid = ? AND date = ?")
+  const rows = stmt.all(mainAccount.game_uid, date)
 
   if (rows.length > 0) {
     console.log('Traveller, you\'ve already checked in today')
