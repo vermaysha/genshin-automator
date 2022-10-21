@@ -17,8 +17,9 @@ build({
   sourcemap: true,
   minify: true,
   target: 'es6',
+  format: 'cjs',
 }).then(() => {
-  const fileList = ['package.json', 'package-lock.json', '.env']
+  const fileList = ['package.json', 'package-lock.json', '.env', 'fly.toml']
 
   for (const file of fileList) {
     if (fs.existsSync(file)) {
