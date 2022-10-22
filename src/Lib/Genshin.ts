@@ -190,12 +190,14 @@ export default class Genshin {
     return new Promise<Embed>(async (resolve, reject) => {
       axios.defaults.headers.common['Referer'] = this.WEB_SIGN_IN
       const signInfo: SignInfo = (await axios(this.API_SIGN_INFO)).data
-      const totalLoginDay = (signInfo.data?.total_sign_day ?? 1) - 1
 
-      if (signInfo.retcode != 0) {
+      if (signInfo.retcode != 0 || signInfo.data == null) {
         reject(signInfo.message)
         return false
       }
+
+      const totalLoginDay =
+        signInfo.data.total_sign_day > 0 ? signInfo.data.total_sign_day : 1
 
       if (signInfo.data?.first_bind) {
         reject("It's first time you check-in, please check in manually once.")
@@ -224,7 +226,7 @@ export default class Genshin {
 
       if (signIn.retcode == 0) {
         const signReward: SignReward = (await axios(this.API_SIGN_REWARD)).data
-        const reward: Reward = signReward.data.awards[totalLoginDay]
+        const reward: Reward = signReward.data.awards[totalLoginDay - 1]
 
         const embed: Embed = {
           title: 'Genshin Impact Daily Check-In',
@@ -272,7 +274,7 @@ export default class Genshin {
             },
             {
               name: 'Total Daily Check-In',
-              value: (totalLoginDay - 1).toString(),
+              value: totalLoginDay.toString(),
               inline: true,
             },
             {
