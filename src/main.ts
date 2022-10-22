@@ -3,16 +3,18 @@ import { startCheckIn } from './Start/startCheckIn'
 import mongoose from 'mongoose'
 import { red, green } from 'chalk'
 import { startRedeem } from './Start/startRedeem'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 async function main() {
-  if (process.env.MONGO) {
-    await mongoose.connect(process.env.MONGO)
+  if (process.env.MONGO_URI) {
+    await mongoose.connect(process.env.MONGO_URI)
 
     mongoose.connection.once('open', () => {
       console.log(green('MongoDB database connection established successfully'))
     })
   } else {
-    console.log(red('MONGO env variable not set'))
+    console.log(red('MONGO_URI env variable not set'))
     process.exit(1)
   }
 
@@ -43,6 +45,8 @@ async function main() {
       timezone: 'Asia/Singapore',
     }
   )
+
+  console.log(green('Schedule running'))
 }
 
 main()
