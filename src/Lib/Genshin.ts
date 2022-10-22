@@ -91,8 +91,6 @@ type Reward = {
 }
 
 export default class Genshin {
-  API_INFO =
-    'https://api-account-os.hoyoverse.com/auth/api/getUserAccountInfoByLToken'
   private API_GAME_LIST =
     'https://api-os-takumi.hoyoverse.com/binding/api/getUserGameRolesByCookie?game_biz=hk4e_global'
   private API_SIGN_REWARD =
@@ -104,11 +102,9 @@ export default class Genshin {
   private WEB_SIGN_IN =
     'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481&mhy_auth_required=true&mhy_presentation_style=fullscreen&utm_source=hoyolab&utm_medium=battlechronicle'
 
-  API_REDEEM_INFO =
-    'https://api.github.com/repos/ataraxyaffliction/gipn-json/commits/main'
-  API_REDEEM_LIST =
+  private API_REDEEM_LIST =
     'https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn-update.json'
-  API_REDEEM =
+  private API_REDEEM =
     'https://sg-hk4e-api.hoyoverse.com/common/apicdkey/api/webExchangeCdkey'
 
   /**
@@ -373,12 +369,25 @@ export default class Genshin {
       }
     })
   }
+
+  /**
+   * Delay
+   *
+   * @param second number
+   * @returns Promise
+   */
   private delay(second: number) {
     return new Promise((resolve) => {
       setTimeout(resolve, second * 1000)
     })
   }
 
+  /**
+   * FormatRedeemReward
+   *
+   * @param code Code
+   * @returns Array<CodeRewards>
+   */
   private formatRedeemReward(code: Code): Array<CodeReward> {
     const rewards: Array<CodeReward> = []
     for (const reward of code.reward_array) {
