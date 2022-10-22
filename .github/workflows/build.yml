@@ -6,9 +6,12 @@ on:
   pull_request:
     branches: [master]
 
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
 jobs:
-  run-action:
-    name: Run action
+  build:
+    name: Build code
     runs-on: ubuntu-latest
 
     steps:
@@ -31,5 +34,11 @@ jobs:
         with:
           path: build/
 
+  deploy:
+    name: Deploy to Fly.io
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
