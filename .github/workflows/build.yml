@@ -30,3 +30,6 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           path: build/
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
