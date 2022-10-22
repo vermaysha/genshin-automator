@@ -280,10 +280,10 @@ export default class Genshin {
         return false
       }
 
-      // if (signInfo.data?.is_sign) {
-      //   reject("Traveller, you've already checked in today")
-      //   return false
-      // }
+      if (signInfo.data?.is_sign) {
+        reject("Traveller, you've already checked in today")
+        return false
+      }
 
       const API_GAME_LIST = new URL(this.API_GAME_LIST)
 
