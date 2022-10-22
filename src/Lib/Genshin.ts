@@ -136,6 +136,12 @@ export default class Genshin {
       })
 
       const accounts: Accounts = (await axios(this.API_GAME_LIST)).data
+
+      if (accounts.retcode != 0) {
+        reject(accounts.message)
+        return false
+      }
+
       const account: AccountData = orderBy(
         accounts.data.list,
         ['level'],
