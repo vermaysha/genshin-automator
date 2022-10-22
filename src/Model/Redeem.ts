@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import { model, Schema } from 'mongoose'
 
-export const RedeemSchema = new mongoose.Schema({
+export const RedeemSchema = new Schema({
   code: {
     type: String,
     required: true,
@@ -19,4 +19,4 @@ export const RedeemSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.model('Redeem', RedeemSchema)
+export default model('Redeem', RedeemSchema)

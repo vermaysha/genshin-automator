@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import { model, Schema } from 'mongoose'
 
-export const CheckinSchema = new mongoose.Schema({
+export const CheckinSchema = new Schema({
   uid: {
     type: String,
     required: true,
@@ -15,4 +15,4 @@ export const CheckinSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.model('Checkin', CheckinSchema)
+export default model('Checkin', CheckinSchema)

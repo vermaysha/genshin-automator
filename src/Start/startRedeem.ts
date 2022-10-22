@@ -1,5 +1,5 @@
 import Genshin from '../Lib/Genshin'
-import chalk from 'chalk'
+import { red } from 'chalk'
 import { Embed, Webhook } from '../Types'
 import DiscordWebhook from '../Lib/DiscordWebhook'
 
@@ -23,6 +23,6 @@ export async function startRedeem(cookie: string) {
       await discord.execute(requestBody)
     }
   } catch (err) {
-    console.log(chalk.red(err))
+    console.log(red(err))
   }
 }
