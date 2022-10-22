@@ -1,4 +1,4 @@
-import DiscordWebhook from '../index'
+import DiscordWebhook from '../Lib/Genshin'
 import * as Webhook from './Webhook'
 import EmbedAuthor from './Embed/Author'
 import EmbedField from './Embed/Field'
