@@ -9,8 +9,8 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "build": "[ -f build.js ] && node build.js || exit 0",
     "dev": "tsnd --respawn src/main.ts",
-    "prod": "node main.ts",
-    "start": "node server.js"
+    "prod": "[ -f ./build/main.js ] && node ./build/main.js || node main.js",
+    "start": "[ -f ./build/server.js ] && node ./build/server.js || node server.js"
   },
   "repository": {
     "type": "git",
