@@ -1,5 +1,5 @@
 import Cron from 'node-cron'
-// import { startCheckIn } from './Start/startCheckIn'
+import { startCheckIn } from './Start/startCheckIn'
 import mongoose from 'mongoose'
 import { red, green } from 'chalk'
 import { startRedeem } from './Start/startRedeem'
@@ -18,15 +18,31 @@ async function main() {
 
   const cookies = process.env.COOKIES?.split('#') || []
 
-  for (const cookie of cookies) {
-    // Cron.schedule('*/2 * * * *', () => {
-    //   startCheckIn(cookie)
-    // })
+  // Run task at 00:00.
+  Cron.schedule(
+    '0 0 * * *',
+    async () => {
+      for (const cookie of cookies) {
+        await startCheckIn(cookie)
+      }
+    },
+    {
+      timezone: 'Asia/Singapore',
+    }
+  )
 
-    Cron.schedule('*/15 * * * *', () => {
-      startRedeem(cookie)
-    })
-  }
+  // Run task at every 30th minute.
+  Cron.schedule(
+    '*/30 * * * *',
+    async () => {
+      for (const cookie of cookies) {
+        await startRedeem(cookie)
+      }
+    },
+    {
+      timezone: 'Asia/Singapore',
+    }
+  )
 }
 
 main()
