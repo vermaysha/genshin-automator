@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [master]
 
-env:
-  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
 jobs:
   build:
     name: Build code
@@ -33,12 +30,3 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           path: build/
-
-  deploy:
-    name: Deploy to Fly.io
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
