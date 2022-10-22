@@ -19,7 +19,7 @@ build({
   target: 'es6',
   format: 'cjs',
 }).then(() => {
-  const fileList = ['package.json', 'package-lock.json', '.env', 'fly.toml']
+  const fileList = ['package.json', 'package-lock.json', 'fly.toml']
 
   for (const file of fileList) {
     if (fs.existsSync(file)) {
