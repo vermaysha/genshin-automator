@@ -11,16 +11,15 @@ export async function startCheckIn(cookie: string) {
 
   try {
     const embed: Embed = await genshin.checkIn()
-    const discord = new DiscordWebhook(
-      'https://discord.com/api/webhooks/977800776535638027/Xdgg3RKNJfSzOUgAAepFHwOUOvYiVfbp37oMhl033Oy6NbvFxscKSfAHMwD_-JsHjMzh'
-    )
-    // embed.footer = {}
+    if (process.env.DISCORD_WEBHOOK) {
+      const discord = new DiscordWebhook(process.env.DISCORD_WEBHOOK)
 
-    const requestBody: Webhook.input.POST = {
-      embeds: [embed],
+      const requestBody: Webhook.input.POST = {
+        embeds: [embed],
+      }
+
+      await discord.execute(requestBody)
     }
-
-    await discord.execute(requestBody)
   } catch (err) {
     console.log(chalk.red(err))
   }

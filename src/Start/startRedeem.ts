@@ -12,15 +12,15 @@ export async function startRedeem(cookie: string) {
   try {
     const embeds: Array<Embed> = await genshin.redeem()
 
-    const discord = new DiscordWebhook(
-      'https://discord.com/api/webhooks/977800776535638027/Xdgg3RKNJfSzOUgAAepFHwOUOvYiVfbp37oMhl033Oy6NbvFxscKSfAHMwD_-JsHjMzh'
-    )
+    if (process.env.DISCORD_WEBHOOK) {
+      const discord = new DiscordWebhook(process.env.DISCORD_WEBHOOK)
 
-    const requestBody: Webhook.input.POST = {
-      embeds: embeds,
+      const requestBody: Webhook.input.POST = {
+        embeds,
+      }
+
+      await discord.execute(requestBody)
     }
-
-    await discord.execute(requestBody)
   } catch (err) {
     console.log(chalk.red(err))
   }
