@@ -1,5 +1,10 @@
 import express, { Response } from 'express'
 
+/**
+ * Run main app
+ */
+import './main'
+
 const app = express()
 const port = process.env.PORT || 3000
 
