@@ -3,6 +3,7 @@ import { Embed, EmbedField } from '../Types'
 // import mongoose from 'mongoose'
 import { map, orderBy, remove } from 'lodash'
 import Redeem from '../Model/Redeem'
+import Checkin from '../Model/Checkin'
 
 type SignInfo = {
   retcode: number
@@ -271,15 +272,18 @@ export default class Genshin {
 
       if (signInfo.retcode != 0) {
         reject(signInfo.message)
+        return false
       }
 
       if (signInfo.data?.first_bind) {
         reject("It's first time you check-in, please check in manually once.")
+        return false
       }
 
-      if (signInfo.data?.is_sign) {
-        reject("Traveller, you've already checked in today")
-      }
+      // if (signInfo.data?.is_sign) {
+      //   reject("Traveller, you've already checked in today")
+      //   return false
+      // }
 
       const API_GAME_LIST = new URL(this.API_GAME_LIST)
 
@@ -356,6 +360,11 @@ export default class Genshin {
             },
           ],
         }
+
+        await new Checkin({
+          response: signIn,
+          uid: account.game_uid,
+        }).save()
 
         resolve(embed)
         return
