@@ -146,7 +146,7 @@ export default class Genshin {
         }
 
         const embed: Embed = {
-          title: 'Genshin Impact Daily Check-In',
+          title: 'Genshin Impact Automatic Redeem',
           description: redeemResponse.message,
           color: parseInt('E6E18F', 16), // ##E6E18F
           thumbnail: {
