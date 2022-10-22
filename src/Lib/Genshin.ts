@@ -1,94 +1,20 @@
 import axios from 'axios'
 import { Embed, EmbedField } from '../Types'
-// import mongoose from 'mongoose'
 import { map, orderBy, remove } from 'lodash'
 import Redeem from '../Model/Redeem'
 import Checkin from '../Model/Checkin'
-
-type SignInfo = {
-  retcode: number
-  message: string
-  data?: {
-    total_sign_day?: number
-    today?: string
-    is_sign?: boolean
-    first_bind?: boolean
-    is_sub?: boolean
-    region?: string
-  }
-}
-
-type Accounts = {
-  retcode: number
-  message: string
-  data: {
-    list: Array<AccountData>
-  }
-}
-
-type AccountData = {
-  game_biz: string
-  region: string
-  game_uid: string
-  nickname: string
-  level: number
-  is_chosen: boolean
-  region_name: string
-  is_official: boolean
-}
-
-type SignIn = {
-  retcode: number
-  message: string
-  data?: {
-    code: string
-  }
-}
-
-type Codes = {
-  CODES: Array<Code>
-}
-
-type Code = {
-  reward: string
-  date: string
-  code: string
-  is_expired: boolean
-  region: number
-  reward_array: Array<CodeReward>
-}
-
-type CodeReward = {
-  image_path: string
-  image_url?: string
-  name: string
-  count: string
-  rarity: string
-  rarityNumber?: number
-}
-
-type RedeemResponse = {
-  retcode: number
-  message: string
-  data?: {
-    msg: string
-  }
-}
-
-type SignReward = {
-  retcode: number
-  message: string
-  data: {
-    month: number
-    awards: Array<Reward>
-  }
-}
-
-type Reward = {
-  icon: string
-  name: string
-  cnt: number
-}
+import {
+  Code,
+  CodeReward,
+  Codes,
+  Accounts,
+  AccountData,
+  RedeemResponse,
+  SignInfo,
+  SignIn,
+  SignReward,
+  Reward,
+} from '../Types/Genshin'
 
 export default class Genshin {
   private API_GAME_LIST =
