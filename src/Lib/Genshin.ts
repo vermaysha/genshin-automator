@@ -248,6 +248,7 @@ export default class Genshin {
         await new Redeem({
           code: code.code,
           uid: account.game_uid,
+          response: redeemResponse,
         }).save()
 
         await this.delay(6)

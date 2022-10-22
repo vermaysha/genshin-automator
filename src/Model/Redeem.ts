@@ -9,6 +9,10 @@ export const RedeemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  response: {
+    type: Object,
+    required: true,
+  },
   redeemAt: {
     type: Date,
     default: Date.now(),
