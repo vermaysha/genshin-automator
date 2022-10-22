@@ -123,6 +123,11 @@ export default class Genshin {
     axios.defaults.headers.common['Accept-Encoding'] = 'gzip, deflate, br'
   }
 
+  /**
+   * Redeem Code
+   *
+   * @returns Promise<Array<Embed>>
+   */
   public async redeem() {
     return new Promise<Array<Embed>>(async (resolve, reject) => {
       const codeLists: Codes = (await axios(this.API_REDEEM_LIST)).data
