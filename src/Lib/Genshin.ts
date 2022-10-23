@@ -159,8 +159,9 @@ export default class Genshin {
             url: 'https://genshin.hoyoverse.com',
           },
           footer: {
-            text: 'Genshin Automatic Checkin',
-            icon_url: 'https://paimon.moe/favicon.ico',
+            text: 'Genshin Impact Automatic Redeem',
+            icon_url:
+              'https://img-os-static.hoyolab.com/communityWeb/upload/1d7dd8f33c5ccdfdeac86e1e86ddd652.png',
           },
           timestamp: new Date().toISOString(),
           fields,
@@ -242,8 +243,9 @@ export default class Genshin {
             url: 'https://genshin.hoyoverse.com',
           },
           footer: {
-            text: 'Genshin Automatic Checkin',
-            icon_url: 'https://paimon.moe/favicon.ico',
+            text: 'Genshin Impact Automatic Checkin',
+            icon_url:
+              'https://img-os-static.hoyolab.com/communityWeb/upload/1d7dd8f33c5ccdfdeac86e1e86ddd652.png',
           },
           timestamp: new Date().toISOString(),
           fields: [
