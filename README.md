@@ -38,7 +38,7 @@ Now you can run script under `build` directory
 
 1. To begin, login with your [HoYoLab](http://https://www.hoyolab.com/home) Account.
 2. Type `java` in the address bar followed by the script down below.
-3. `` script:check = document.cookie.includes('ltoken') && document.cookie.includes('ltuid') || alert('Please logout and log back in before trying again, cookie is currently expired/invalid!'); cookie = document.cookie.match(/(lt(oken|uid)|cookie_token)=([^;]*)/gm).join('; '); check && document.write(`<p>${cookie}</p><br><button onclick="navigator.clipboard.writeText('${cookie}')">Click here to copy!</button><br>`) ``
+3. `` script:check = document.cookie.includes('ltoken') && document.cookie.includes('ltuid') || alert('Please logout and log back in before trying again, cookie is currently expired/invalid!'); cookie = document.cookie; check && document.write(`<p>${cookie}</p><br><button onclick="navigator.clipboard.writeText('${cookie}')">Click here to copy!</button><br>`) ``
 4. Once you've successfully ran the script, click the Click here to copy! button to copy the cookie.
 5. Finally, copy your token to COOKIES environment variable.
 6. **Optional**, You can add multiple cookie by add `#` as separator.
