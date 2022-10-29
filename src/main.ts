@@ -1,4 +1,4 @@
-import Cron from 'node-cron'
+import Scheduler from 'node-schedule'
 import { startCheckIn } from './Start/startCheckIn'
 import { connect, connection } from 'mongoose'
 import { red, green } from 'chalk'
@@ -21,30 +21,20 @@ async function main() {
   const cookies = process.env.COOKIES?.split('#') || []
 
   // Run task at 00:00.
-  Cron.schedule(
-    '0 0 * * *',
-    async () => {
-      for (const cookie of cookies) {
-        await startCheckIn(cookie)
-      }
-    },
-    {
-      timezone: 'Asia/Singapore',
+  Scheduler.scheduleJob('0 0 * * *', async () => {
+    console.log('Check-in Process Running')
+    for (const cookie of cookies) {
+      await startCheckIn(cookie)
     }
-  )
+  })
 
-  // Run task at every 30th minute.
-  Cron.schedule(
-    '*/30 * * * *',
-    async () => {
-      for (const cookie of cookies) {
-        await startRedeem(cookie)
-      }
-    },
-    {
-      timezone: 'Asia/Singapore',
+  // Run task at every 1 hour
+  Scheduler.scheduleJob('0 1 * * *', async () => {
+    console.log('Redeem process running')
+    for (const cookie of cookies) {
+      await startRedeem(cookie)
     }
-  )
+  })
 
   console.log(green('Schedule running'))
 }

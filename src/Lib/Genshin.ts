@@ -62,7 +62,7 @@ export default class Genshin {
 
       if (accounts.retcode != 0) {
         reject(accounts.message)
-        return false
+        return
       }
 
       const account: AccountData = orderBy(
@@ -194,7 +194,7 @@ export default class Genshin {
 
       if (signInfo.retcode != 0 || signInfo.data == null) {
         reject(signInfo.message)
-        return false
+        return
       }
 
       const totalLoginDay =
@@ -202,12 +202,12 @@ export default class Genshin {
 
       if (signInfo.data?.first_bind) {
         reject("It's first time you check-in, please check in manually once.")
-        return false
+        return
       }
 
       if (signInfo.data?.is_sign) {
         reject("Traveller, you've already checked in today")
-        return false
+        return
       }
 
       const API_GAME_LIST = new URL(this.API_GAME_LIST)
@@ -291,7 +291,6 @@ export default class Genshin {
           response: signIn,
           uid: account.game_uid,
         }).save()
-
         resolve(embed)
         return
       } else {

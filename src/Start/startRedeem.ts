@@ -1,5 +1,5 @@
 import Genshin from '../Lib/Genshin'
-import { red } from 'chalk'
+import { red, green } from 'chalk'
 import { Embed, Webhook } from '../Types'
 import DiscordWebhook from '../Lib/DiscordWebhook'
 
@@ -21,6 +21,7 @@ export async function startRedeem(cookie: string) {
       }
 
       await discord.execute(requestBody)
+      console.log(green('Redeem Successfully'))
     }
   } catch (err) {
     console.log(red(err))

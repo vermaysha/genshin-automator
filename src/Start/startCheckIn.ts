@@ -1,5 +1,5 @@
 import Genshin from '../Lib/Genshin'
-import { red } from 'chalk'
+import { red, green } from 'chalk'
 import DiscordWebhook from '../Lib/DiscordWebhook'
 import { Embed, Webhook } from '../Types'
 
@@ -20,6 +20,7 @@ export async function startCheckIn(cookie: string) {
       }
 
       await discord.execute(requestBody)
+      console.log(green('Check-in Successfully'))
     }
   } catch (err) {
     console.log(red(err))
