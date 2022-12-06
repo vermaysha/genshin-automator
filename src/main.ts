@@ -29,7 +29,7 @@ async function main() {
   })
 
   // Run task at every 1 hour
-  Scheduler.scheduleJob('0 1 * * *', async () => {
+  Scheduler.scheduleJob('* 1 * * *', async () => {
     console.log('Redeem process running')
     for (const cookie of cookies) {
       await startRedeem(cookie)
