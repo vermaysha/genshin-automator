@@ -17,15 +17,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: build/
+          path: dist/
