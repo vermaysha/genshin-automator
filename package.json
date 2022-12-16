@@ -1,6 +1,6 @@
 {
   "name": "genshin-impact-automatic-web-helper",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Genshin impact automatic web helper",
   "main": "dist/main.js",
   "scripts": {
