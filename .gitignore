@@ -3,3 +3,9 @@ node_modules
 .build
 build
 .env
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
+dist
