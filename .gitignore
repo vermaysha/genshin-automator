@@ -1,6 +1,5 @@
 node_modules
 .history
 .build
-database.db
 build
 .env
