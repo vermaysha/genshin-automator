@@ -16,9 +16,16 @@
     "type": "git",
     "url": "git+https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Genshin-Impact",
+    "Automatic"
+  ],
+  "author": {
+    "email": "vermaysha@gmail.com",
+    "name": "Ashary Vermaysha",
+    "url": "https://vermaysha.com"
+  },
+  "license": "lgpl",
   "bugs": {
     "url": "https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper/issues"
   },
