@@ -28,12 +28,12 @@
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.3",
     "@types/node-schedule": "^2.1.0",
-    "@types/prettier": "^2.7.1",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.40.1",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.3",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "ts-node-dev": "^2.0.0",
@@ -51,7 +51,7 @@
     "dotenv": "16.0.3",
     "express": "^4.18.2",
     "lodash": "4.17.21",
-    "mongoose": "^6.6.7",
+    "mongoose": "^6.8.2",
     "node-schedule": "2.1.0"
   }
 }
