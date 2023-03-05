@@ -23,15 +23,15 @@ I made this simple application with the aim of making it easier to check-in dail
 1. `git clone https://github.com/vermaysha/genshin-automator.git`
 2. `cd genshin-automator`
 3. `cp .env.example .env`
-4. `npm ci`
-5. `npm run build`
+4. `yarn install`
+5. `yarn build`
 
-Now you can run script under `build` directory
+Now you can run script under `dist` directory
 
 ### Run Script
 
-1. In the `build` directory, run command below
-2. `npm ci --omit=dev`
+1. In the `dist` directory, run command below
+2. `yarn install --prod`
 3. `npm run start` or `npm run prod`
 
 ## How to get cookies
