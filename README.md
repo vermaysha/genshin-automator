@@ -1,4 +1,17 @@
-# Genshin Impact Automatic Web Helper
+<div align="center">
+  <h1>Genshin Impact Automatic Web Helper</h1>
+  <p>
+        <a href="https://github.com/vermaysha/genshin-automator/actions/workflows/build.yml">
+            <img src="https://img.shields.io/github/actions/workflow/status/vermaysha/genshin-automator/build.yml?branch=master&amp;label=Build&amp;style=flat-square" alt="GitHub Build Action Status">
+        </a>
+        <a href="LICENSE.md">
+            <img src="https://img.shields.io/github/license/vermaysha/genshin-automator?style=flat-square" alt="LICENSE">
+        </a>
+        <a href="https://github.com/vermaysha/genshin-automator/releases/latest">
+            <img src="https://img.shields.io/github/release-date/vermaysha/genshin-automator?style=flat-square" alt="GitHub Release Date - Published_At">
+        </a>
+    </p>
+</div>
 
 I made this simple application with the aim of making it easier to check-in daily on the hoyolab event page, while also making it easier to redeem the code provided automatically.
 
