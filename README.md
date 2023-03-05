@@ -21,7 +21,7 @@ I made this simple application with the aim of making it easier to check-in dail
 ### Building from source
 
 1. `git clone https://github.com/vermaysha/genshin-automator.git`
-2. `cd genshin-automatorr`
+2. `cd genshin-automator`
 3. `cp .env.example .env`
 4. `npm ci`
 5. `npm run build`
