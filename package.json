@@ -1,5 +1,5 @@
 {
-  "name": "genshin-impact-automatic-web-helper",
+  "name": "genshin-automator",
   "version": "2.0.0",
   "description": "Genshin impact automatic web helper",
   "main": "dist/main.js",
@@ -7,14 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "build": "tsc",
+    "build": "del-cli dist && tsc && cpy 'package.json' 'yarn.lock' dist",
     "dev": "tsnd --respawn src/main.ts",
     "prod": "[ -f ./dist/main.js ] && node ./dist/main.js || node main.js",
     "start": "[ -f ./dist/server.js ] && node ./dist/server.js || node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper.git"
+    "url": "git+https://github.com/vermaysha/genshin-automator.git"
   },
   "keywords": [
     "Genshin-Impact",
@@ -25,11 +25,11 @@
     "name": "Ashary Vermaysha",
     "url": "https://vermaysha.com"
   },
-  "license": "lgpl",
+  "license": "LGPL-2.1",
   "bugs": {
-    "url": "https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper/issues"
+    "url": "https://github.com/vermaysha/genshin-automator/issues"
   },
-  "homepage": "https://github.com/vermaysha/Genshin-Impact-Automatic-Web-Helper#readme",
+  "homepage": "https://github.com/vermaysha/genshin-automator#readme",
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/lodash": "^4.14.191",
@@ -38,6 +38,8 @@
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "cpy-cli": "4.2.0",
+    "del-cli": "5.0.0",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
