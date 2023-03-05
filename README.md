@@ -32,7 +32,8 @@ Now you can run script under `dist` directory
 
 1. In the `dist` directory, run command below
 2. `yarn install --prod`
-3. `npm run start` or `npm run prod`
+3. Move your `.env` file to `dist/.env`
+4. `npm run start` or `npm run prod`
 
 ## How to get cookies
 
