@@ -37,7 +37,7 @@
     "@types/node-schedule": "^2.1.0",
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.1",
     "cpy-cli": "4.2.0",
     "del-cli": "5.0.0",
     "eslint": "^8.36.0",
